@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 폴더 만들고
+        // 2. VS Code로 Open folder
+        // 3. Extension -> Live Server 설치
+        // 4. ! 누르고 tab -> Emmet
+        // 5. body 태그 안에 script 태그 만들어 넣음
+        // 6. script 태그 안에 자바스크립트 코드 작성
+
+        //객체란? 데이터와 메서드의 모임
+        //자바: 클래스 작성 -> new 생성자()
+        //자바스크립트에서는 객체를 만들 때 클래스 X
+
+        //자바 스크립트에서 객체 생성
+        var obj = {};
+        //var : 변수를 선언 할 때 사용하는 키워드
+
+        //자바스크립트의 객체의 데이터 : 프로퍼티 라고 한다
+        //프로퍼티는 키 : 밸류  의 쌍으로 구성
+        //키: 문자열 
+        //밸류 : 문자열, 수자, tru/false, null, 객체, 배열, 함수....
+        //Person 객체
+        var p1 = {name: "Yang", age: 45};
+        var p2 = {name: "Park", age : 30};
+
+        var p3 = {
+            name : "Kim",
+            age : 45,
+            eat: function(){
+                console.log("음식을 먹는다.");
+            },
+            speak: function(){
+                console.log(`저는 ${this.name}이고, 나이는 ${this.age}입니다.`)
+            }
+        }
+
+        p3.eat();
+        p3.speak();
+
+    </script>
+</body>
+</html>
