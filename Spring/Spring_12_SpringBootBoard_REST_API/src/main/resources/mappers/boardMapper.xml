@@ -54,11 +54,11 @@
 		SELECT id, content, writer, title, view_cnt, date_format(reg_date, '%y-%m-%d') AS reg_date 
 		FROM board
 		<!-- 동적쿼리(검색 조건) -->
-		<if test="key != 'none'">
+		<if test="key != null">
 			WHERE ${key} LIKE concat('%', #{word}, '%')
 		</if>
 		<!-- 동적쿼리(정렬 조건) -->
-		<if test="orderBy != 'none'">
+		<if test="orderBy != null">
 			ORDER BY ${orderBy} ${orderByDir}
 		</if>	
 			
