@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue 시작</title>
+    <!-- 1. vue cdn -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- 3. div#app 생성  -->
+    <div id="app"></div>
+
+    
+    <script>
+      
+      // 2. createApp 생성 
+      const {createApp, ref} = Vue
+      //createapp 객체, 즉 instance
+      const app = createApp({
+        //createapp의 선언부
+        setup(){
+          //setup함수의 선언부
+          const msg = ref("abc")
+          console.log(msg)
+          console.log(msg.value)
+          // 5. setup 함수 return을 해줘야지 template에 전송이 된다
+          return{
+            msg
+          }
+        }
+      }) 
+        
+      // 4. script mount 연결
+      app.mount("#app")
+    </script>
+  </body>
+</html>
