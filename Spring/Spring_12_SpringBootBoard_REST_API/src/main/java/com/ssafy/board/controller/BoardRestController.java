@@ -3,8 +3,10 @@ package com.ssafy.board.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/api-board")
 @Tag(name="BoardRestController", description = "게시판 CRUD")
+@CrossOrigin("*")
 public class BoardRestController {
 	private final BoardService boardService;
 	
@@ -60,7 +63,12 @@ public class BoardRestController {
 	public ResponseEntity<Board> detail(@PathVariable("id") int id){
 		Board board = boardService.readBoard(id); //조회수도 하나 증가 하더라!
 		//가져왔는데 board 가 null이면 예외처리를 해줘라! 404 처리! (직접 해볼것 ㅎ)
-		return new ResponseEntity<Board>(board, HttpStatus.OK);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Access-Conrol-Allow-Origin", "*");
+		
+		
+		return new ResponseEntity<Board>(board,headers, HttpStatus.OK);
 	}
 	
 	//게시글 등록 (Form 형식으로 넘어왔을 때)
